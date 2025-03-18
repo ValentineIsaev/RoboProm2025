@@ -1,0 +1,69 @@
+<circuit version="1.1.0-SR1" rev="2005" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="0" >
+
+<item itemtype="Subcircuit" CircId="Nano-2" mainComp="false" Show_id="true" Show_Val="false" Pos="-340,80" rotation="-90" hflip="1" vflip="-1" label="ПК" idLabPos="-0.862242,117.527" labelrot="90" valLabPos="-16,20" valLabRot="0">
+<mainCompProps MainCompId="m328 TQFP-269" Frequency="16 MHz" Program="PK/PK.ino.standard.hex" Auto_Load="false" saveEepr="true" MainMcu="true" SerialMon="-1" />
+</item>
+
+<item itemtype="Led" CircId="Led-9" mainComp="false" Show_id="false" Show_Val="false" Pos="-440,-64" rotation="-180" hflip="1" vflip="1" label="Led-9" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Color="Red" Grounded="false" Threshold="1.8 V" MaxCurrent="30 mA" Resistance="0.6 Ω" />
+
+<item itemtype="Led" CircId="Led-10" mainComp="false" Show_id="false" Show_Val="false" Pos="-440,-88" rotation="-180" hflip="1" vflip="1" label="Led-10" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Color="Green" Grounded="false" Threshold="3.5 V" MaxCurrent="30 mA" Resistance="0.6 Ω" />
+
+<item itemtype="Led" CircId="Led-11" mainComp="false" Show_id="false" Show_Val="false" Pos="-440,-112" rotation="-180" hflip="1" vflip="1" label="Led-11" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Color="Blue" Grounded="false" Threshold="3.6 V" MaxCurrent="30 mA" Resistance="0.6 Ω" />
+
+<item itemtype="Push" CircId="Push-13" mainComp="false" Show_id="false" Show_Val="false" Pos="-288,-96" rotation="-90" hflip="1" vflip="1" label="Push-13" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Norm_Close="false" Poles="1" />
+
+<item itemtype="Resistor" CircId="Resistor-25" mainComp="false" ShowProp="Resistance" Show_id="false" Show_Val="true" Pos="-396,-64" rotation="-360" hflip="1" vflip="1" label="Resistor-25" idLabPos="-16,-24" labelrot="0" valLabPos="-10.3172,4.64695" valLabRot="0" Resistance="220 Ω" />
+
+<item itemtype="Resistor" CircId="Resistor-27" mainComp="false" ShowProp="Resistance" Show_id="false" Show_Val="true" Pos="-396,-88" rotation="-360" hflip="1" vflip="1" label="Resistor-27" idLabPos="-16,-24" labelrot="0" valLabPos="-10.3172,4.64695" valLabRot="0" Resistance="220 Ω" />
+
+<item itemtype="Resistor" CircId="Resistor-28" mainComp="false" ShowProp="Resistance" Show_id="false" Show_Val="true" Pos="-396,-112" rotation="-360" hflip="1" vflip="1" label="Resistor-28" idLabPos="-16,-24" labelrot="0" valLabPos="-10.3172,4.64695" valLabRot="0" Resistance="220 Ω" />
+
+<item itemtype="Subcircuit" CircId="Nano-37" mainComp="false" Show_id="true" Show_Val="false" Pos="-392,-44" rotation="0" hflip="-1" vflip="1" label="KNU" idLabPos="22.8494,153.742" labelrot="0" valLabPos="-16,20" valLabRot="0">
+<mainCompProps MainCompId="m328 TQFP-269" Frequency="16 MHz" Program="KNU/KNU.ino.standard.hex" Auto_Load="false" saveEepr="true" MainMcu="false" SerialMon="-1" />
+</item>
+
+<item itemtype="SerialPort" CircId="SerialPort-61" mainComp="false" Show_id="false" Show_Val="false" Pos="-352,68" rotation="360" hflip="1" vflip="1" label="SerialPort" idLabPos="-20,-32" labelrot="0" valLabPos="-16,20" valLabRot="0" Auto="false" Port="COM3" Baudrate="9600 _Bd" DataBits="8 _bits" StopBits="1 _bits" SerialMon="false" />
+
+<item itemtype="Node" CircId="Node-32" mainComp="false" Pos="-464,-88" />
+
+<item itemtype="Node" CircId="Node-34" mainComp="false" Pos="-464,-112" />
+
+<item itemtype="Node" CircId="Node-96" mainComp="false" Pos="-464,-64" />
+
+<item itemtype="Connector" uid="Connector-21" startpinid="Led-9-lPin" endpinid="Resistor-25-lPin" pointList="-424,-64,-412,-64" />
+
+<item itemtype="Connector" uid="Connector-23" startpinid="Led-11-lPin" endpinid="Resistor-28-lPin" pointList="-424,-112,-412,-112" />
+
+<item itemtype="Connector" uid="Connector-24" startpinid="Led-10-lPin" endpinid="Resistor-27-lPin" pointList="-424,-88,-412,-88" />
+
+<item itemtype="Connector" uid="Connector-39" startpinid="Node-32-1" endpinid="Led-10-rPin" pointList="-464,-88,-456,-88" />
+
+<item itemtype="Connector" uid="Connector-45" startpinid="Nano-2-8" endpinid="Push-13-pinP0" pointList="-288,-20,-288,-80" />
+
+<item itemtype="Connector" uid="Connector-46" startpinid="Push-13-switch0pinN" endpinid="Node-34-1" pointList="-288,-112,-288,-124,-464,-124,-464,-112" />
+
+<item itemtype="Connector" uid="Connector-47" startpinid="Node-32-2" endpinid="Node-34-0" pointList="-464,-88,-464,-112" />
+
+<item itemtype="Connector" uid="Connector-48" startpinid="Node-34-2" endpinid="Led-11-rPin" pointList="-464,-112,-456,-112" />
+
+<item itemtype="Connector" uid="Connector-26" startpinid="Resistor-28-rPin" endpinid="Nano-2-4" pointList="-380,-112,-320,-112,-320,-20" />
+
+<item itemtype="Connector" uid="Connector-25" startpinid="Resistor-27-rPin" endpinid="Nano-2-3" pointList="-380,-88,-328,-88,-328,-20" />
+
+<item itemtype="Connector" uid="Connector-22" startpinid="Resistor-25-rPin" endpinid="Nano-2-2" pointList="-380,-64,-336,-64,-336,-20" />
+
+<item itemtype="Connector" uid="Connector-301" startpinid="Nano-37-1" endpinid="Nano-2-0" pointList="-400,-28,-360,-28,-360,-20" />
+
+<item itemtype="Connector" uid="Connector-302" startpinid="Nano-37-0" endpinid="Nano-2-1" pointList="-400,-20,-368,-20" />
+
+<item itemtype="Connector" uid="Connector-303" startpinid="Node-96-1" endpinid="Nano-2-GND0" pointList="-464,-64,-464,-48,-344,-48,-344,-20" />
+
+<item itemtype="Connector" uid="Connector-304" startpinid="Led-9-rPin" endpinid="Node-96-0" pointList="-456,-64,-464,-64" />
+
+<item itemtype="Connector" uid="Connector-305" startpinid="Node-96-2" endpinid="Node-32-0" pointList="-464,-64,-464,-88" />
+
+<item itemtype="Connector" uid="Connector-314" startpinid="SerialPort-61-pin0" endpinid="Nano-37-7" pointList="-392,60,-400,60,-400,44" />
+
+<item itemtype="Connector" uid="Connector-315" startpinid="SerialPort-61-pin1" endpinid="Nano-37-8" pointList="-392,76,-400,76,-400,52" />
+
+</circuit>
