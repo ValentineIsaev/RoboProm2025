@@ -9,7 +9,7 @@ void setup() {
   pinMode(ledBlue, OUTPUT);
   pinMode(button, INPUT_PULLUP);
 
-  Serial.begin(9600);
+  Serial.begin(115200);
 }
 
 int extractNumber(String str){

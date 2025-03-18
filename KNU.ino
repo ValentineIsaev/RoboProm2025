@@ -1,12 +1,12 @@
-#include <SoftwareSerial.h>
-SoftwareSerial kvu(7, 8);
+//#include <SoftwareSerial.h>
+//SoftwareSerial kvu(7, 8);
 
 int prevButtonState = 0;
 int buttonState = 0;
 
 void setup() {
-  Serial.begin(9600);
-  kvu.begin(9600);
+  Serial.begin(115200);
+  Serial1.begin(115200);
 
   waitLedState();
 }
@@ -15,6 +15,7 @@ int readStateButton(int buttonId){
   Serial.print("Check button:");
   Serial.println(buttonId);
 
+  delay(10);
   if (Serial.available() > 0) {
     String charData = Serial.readStringUntil('\n');
     charData.trim();
@@ -51,45 +52,33 @@ void endWorkLedState(){
   writeLed(2, 0);
 }
 
-String byteAnalyze(){
-  int byteCount = 0;
-  while (kvu.available() > 0) {
-    byte data = kvu.read();
-    if (data != 0x0D && data != 0x0A) {
-      byteCount++; 
-    }
-  }
-  String state = "";
-  switch (byteCount){
-    case 1:
-      state = "Complete";
-      break;
-    case 2:
-      state = "Wait";
-      break;
-  }
-  
-  return state;
+String stringAnalyze(){
+  Serial1.print("Got data:");
+  String data = Serial1.readStringUntil('\n');
+  data.trim();
+  Serial1.print(data);
+  int index = data.indexOf(':');
+  return data.substring(index+1); 
 }
 
 void loop() {
     prevButtonState = buttonState;
     buttonState = readStateButton(0);
     
-    kvu.print("B:");
-    if (buttonState == 1 && prevButtonState == 0){
+    Serial1.print("B:");
+    if (buttonState == 0 && prevButtonState == 1){
       workingLedState();
-      kvu.print(1);
+      Serial1.print(1);
     }
     else{
-      kvu.print(0);
+      Serial1.print(0);
     }
-    kvu.println("#");
+    Serial1.println("#");
 
-    if (kvu.available() > 0){
-      kvu.print("Got data:");
-      String state = byteAnalyze();
-      kvu.println(state);
+    if (Serial1.available() > 0){
+//      String state = byteAnalyze();
+      String state = stringAnalyze();
+      Serial1.println(state);
 
       if (state.equals("Wait")){  
           waitLedState();    
@@ -98,10 +87,8 @@ void loop() {
           endWorkLedState();  
       }
       else{
-        kvu.print("E:Wrong state - ");
-        kvu.println(state);
+        Serial1.print("E:Wrong state - ");
+        Serial1.println(state);
       }
     }
-
-    delay(10);
 }

@@ -7,7 +7,7 @@ import threading
 
 UDP_ADDRESS = ('localhost', 12346)
 SERIAL_PORT = 'COM4'
-BAUD = 9600
+BAUD = 115200
 
 SQUARE_COORDINATES = (
     (20, 0, 90, 0),
@@ -57,9 +57,9 @@ def moving(kmr, knu):
         print('got message from manipulate:')
         print(m_data.decode().split('.')[1])
 
-        send_data = f'{"11" if my_coordinates.is_start else "1"}\n'.encode('ascii')
+        # send_data = f'{"11" if my_coordinates.is_start else "1"}\n'.encode('ascii')
+        send_data = f'S:{"Wait" if my_coordinates.is_start else "Complete"}\n'.encode('ascii')
         knu.write(send_data)
-        time.sleep(0.01)
 
 
 def start_moving(*args):
@@ -82,9 +82,9 @@ def main():
                 data = knu.readline()
                 try:
                     data = data.decode('ascii').strip()
-                except UnicodeEncodeError:
+                except UnicodeDecodeError:
                     print(data)
-                    data = ''
+                    continue
 
                 if data.startswith('B:') and len(data) == 4:
                     button_state = int(data.split(':')[1][:-1])
