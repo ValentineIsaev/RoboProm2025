@@ -93,8 +93,6 @@ def main():
                         threading.Thread(target=start_moving, args=(kmr, knu)).start()
                 elif data.startswith('E:'):
                     print(data.split(':')[1])
-
-            time.sleep(0.001)
     except KeyboardInterrupt:
         print('Program stopped!')
         knu.close()
