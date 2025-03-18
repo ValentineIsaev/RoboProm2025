@@ -27,7 +27,6 @@ def main():
 
             server.sendto(f'done.{name} manipulate got in pose x:{x} y:{y} z:{z} v:{v}'.encode(), client)
 
-            time.sleep(0.01)
     except KeyboardInterrupt:
         print('Program stopped!')
         server.close()
